@@ -1,0 +1,11 @@
+#!/bin/sh
+set -e
+## NOTE: don't run udevadm in docker
+#udevadm control --reload-rules
+mkdir -p /usr/share/NXPLPCXpresso
+chmod a+w /usr/share/NXPLPCXpresso
+if [ -L "/usr/local/mcuxpressoide" ]; then
+  echo "Removing mcuxpressoide symbolic link..."
+  rm /usr/local/mcuxpressoide
+fi
+ln -s /usr/local/mcuxpressoide-10.0.2_411 /usr/local/mcuxpressoide
